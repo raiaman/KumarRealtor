@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Kumar Realtor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/dataTables.bootstrap4.min.css" />
+
+    <!-- JS Scripts -->
+    <script src="assets/js/jquery-3.6.4.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.dataTables.min.js"></script>
+    <script src="assets/js/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Custom Styles -->
+    <style>
+      .card-custom {
+        border: 2px solid #003366;
+        border-radius: 1rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+
+        overflow: hidden;
+
+        padding: 10px 0;
+      }
+
+      .card-custom:hover {
+        transform: scale(1.03);
+      }
+
+      .card-custom img {
+        width: 100%;
+        height: 180px; /* or 200px for more height */
+        object-fit: cover;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .btn-dark {
+        background-color: #002244;
+        border-color: #002244;
+      }
+
+      .btn-dark:hover {
+        background-color: #001122;
+      }
+
+      .circle {
+        width: 215px;
+        height: 25px;
+        line-height: 15px;
+        border-radius: 50%;
+        font-size: 16px;
+        color: #fff;
+        text-align: center;
+        background: #000;
+      }
+
+      @media (max-width: 768px) {
+        .hide-on-small {
+          display: none;
+        }
+      }
+    </style>
+
+    <script>
+      $(document).ready(function () {
+        bindDynamicTable();
+        populateNavbar(navData);
+      });
+
+      var arrTable = [
+        {
+          title: "LODHA PREMIER",
+          possession: "Under Construction",
+          typology: "1, 2 & 3 BHKs",
+          price: "₹ 45.49 Lakhs All-incl",
+          offer: "No Emi for 1 Year",
+          image: "assets\\img\\img2.webp",
+        },
+        {
+          title: "Lodha Crown Taloja",
+          possession: "Ready To Move",
+          typology: "1, 2 & 3 BHKs",
+          price: "₹ 30 Lakhs All-incl",
+          offer: "No Emi for 1 Year",
+          image: "assets\\img\\img2.webp",
+        },
+        {
+          title: "Lodha Crown Kolshet",
+          possession: "Under Construction",
+          typology: "1, 2 BHKs",
+          price: "₹ 57 Lakhs All-incl",
+          offer: "No Emi for 1 Year",
+          image: "assets\\img\\img2.webp",
+        },
+        {
+          title: "LODHA CASA EDEN",
+          possession: "Under Construction",
+          typology: "1, 2 & 3 BHKs",
+          price: "₹ 54 Lakhs All-incl",
+          offer: "No Emi for 1 Year",
+          image: "assets\\img\\img2.webp",
+        },
+        {
+          title: "LODHA PREMIER",
+          possession: "Under Construction",
+          typology: "1, 2 & 3 BHKs",
+          price: "₹ 45.49 Lakhs All-incl",
+          offer: "No Emi for 1 Year",
+          image: "assets\\img\\img2.webp",
+        },
+        {
+          title: "Lodha Crown Taloja",
+          possession: "Ready To Move",
+          typology: "1, 2 & 3 BHKs",
+          price: "₹ 30 Lakhs All-incl",
+          offer: "No Emi for 1 Year",
+          image: "assets\\img\\img2.webp",
+        },
+        {
+          title: "Lodha Crown Kolshet",
+          possession: "Under Construction",
+          typology: "1, 2 BHKs",
+          price: "₹ 57 Lakhs All-incl",
+          offer: "No Emi for 1 Year",
+          image: "assets\\img\\img2.webp",
+        },
+        {
+          title: "LODHA CASA EDEN",
+          possession: "Under Construction",
+          typology: "1, 2 & 3 BHKs",
+          price: "₹ 54 Lakhs All-incl",
+          offer: "No Emi for 1 Year",
+          image: "assets\\img\\img2.webp",
+        },
+      ];
+
+      function bindDynamicTable() {
+        $("#divTable").html("");
+        let tblhtml = "";
+
+        arrTable.forEach((tbl, i) => {
+          if (i % 4 === 0)
+            tblhtml += '<div class="row justify-content-center">';
+          tblhtml += `
+          <div class="col-md-3 mb-4">
+            <div class="card card-custom h-100">
+               <h5 class="card-title text-center fw-bold">${tbl.title}</h5>
+              <img src="${tbl.image}" class="card-img-top" alt="${tbl.title}">
+              <div class="card-body">
+               
+                <p class="card-text mb-1">Possession: ${tbl.possession}</p>
+                <p class="card-text mb-1">Typology: ${tbl.typology}</p>
+                <p class="card-text mb-1">Price: ${tbl.price}</p>
+                <p class="card-text">Offer: ${tbl.offer}</p>
+              </div>
+              <div class="card-footer bg-white border-top-0 text-center">
+                <button class="btn btn-dark">VIEW MORE DETAILS</button>
+              </div>
+            </div>
+          </div>
+        `;
+          if (i % 4 === 3 || i === arrTable.length - 1) tblhtml += "</div>";
+        });
+
+        $("#divTable").append(tblhtml);
+      }
+    </script>
+
+    <!-- Dynamic Navbar Script -->
+    <script>
+      const navData = {
+        DOMBIVLI: ["Lodha Opulis", "Lodha Codename Premier", "Lodha Olivia"],
+        "CENTRAL MUMBAI": ["Lodha Corinthia", "Lodha Regalia"],
+        WADALA: ["Lodha Evoq", "Lodha NCP Altia"],
+        "SOUTH MUMBAI": ["Lodha Adrina", "Lodha Vista"],
+        "WESTERN LINE": ["Lodha Acenza", "Lodha Bel Air"],
+        PUNE: ["Lodha Giardino", "Lodha Panache"],
+        COMMERCIAL: ["Lodha Signet Dombivli", "Lodha Business Ready"],
+      };
+
+      function populateNavbar(navData) {
+        const navContainer = document.getElementById("navItems");
+
+        Object.entries(navData).forEach(([location, projects], index) => {
+          const dropdownId = `dropdown-${index}`;
+
+          const dropdown = document.createElement("li");
+          dropdown.className = "nav-item dropdown";
+          dropdown.innerHTML = `
+          <a class="nav-link dropdown-toggle" href="#" id="${dropdownId}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            ${location}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="${dropdownId}">
+            ${projects
+              .map(
+                (project) => `<a class="dropdown-item" href="#">${project}</a>`
+              )
+              .join("")}
+          </div>
+        `;
+          navContainer.appendChild(dropdown);
+        });
+      }
+    </script>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Kumar Realtor</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ms-auto" id="navItems"></ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div
+      class="container-fluid text-white py-5"
+      style="background: linear-gradient(to right, #006994, #002244)"
+    >
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6 text-center text-md-start">
+            <h1 class="display-4 fw-bold">
+              Find the Perfect<br />Home in Mumbai<br />For You
+            </h1>
+          </div>
+          <div class="col-md-6 text-center">
+            <img
+              src="assets/img/img1.png"
+              alt="Hero Image"
+              class="img-fluid"
+              style="max-height: 300px"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cards Section -->
+    <div class="container mt-5" id="divTable"></div>
+
+    <!-- Contact Section -->
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 50px;
+        background: linear-gradient(to bottom right, #00b4db, #0083b0);
+        flex-wrap: wrap;
+      "
+    >
+      <!-- Left: Agent Image + Heading -->
+      <div style="flex: 1; min-width: 300px; text-align: center">
+        <h1 style="color: white; font-size: 48px; font-weight: bold">
+          Let's Make it Super Easy
+        </h1>
+        <img
+          src="assets\img\img3.webp"
+          alt="Agent"
+          class="hide-on-small"
+          style="max-width: 350px; height: auto; margin-top: 20px"
+        />
+      </div>
+
+      <!-- Right: Contact Form -->
+      <div style="flex: 1; min-width: 300px; padding: 20px; text-align: center">
+        <h2 style="color: black; font-weight: 700">
+          CONTACT OUR PROPERTY EXPERTS
+        </h2>
+
+        <form
+          action="submit_form.php"
+          method="POST"
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            margin-top: 20px;
+          "
+        >
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            required
+            style="
+              width: 100%;
+              max-width: 400px;
+              padding: 15px;
+              border-radius: 10px;
+              border: 4px solid #d3ac45;
+              font-size: 18px;
+            "
+          />
+
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Phone"
+            required
+            pattern="[0-9]{10}"
+            style="
+              width: 100%;
+              max-width: 400px;
+              padding: 15px;
+              border-radius: 10px;
+              border: 4px solid #d3ac45;
+              font-size: 18px;
+            "
+          />
+
+          <button
+            type="submit"
+            style="
+              background-color: #d3ac45;
+              padding: 15px 40px;
+              border-radius: 10px;
+              font-size: 18px;
+              font-weight: bold;
+              border: none;
+              cursor: pointer;
+            "
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+      <div
+        style="
+          background-color: #000;
+          color: #fff;
+          padding: 10px 0;
+          font-size: 14px;
+          text-align: center;
+        "
+      >
+        DISCLAIMER : © This Website Is Lodha Preferred Partner Managed by
+        authorized Marketing Partner MahaRera ID: A51700022015 | The content of
+        the website is for information purposes only | Price mentioned are
+        subject to change without notice |
+        <a href="#" style="color: #84c1ff; text-decoration: underline"
+          >Privacy Policy</a
+        >
+      </div>
+
+      <div
+        style="
+          background-color: #e0d3a6;
+          color: #000;
+          font-size: 16px;
+          padding: 10px 15px;
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+        "
+      >
+        <span
+          ><strong>Optimized by Seraphinite Accelerator</strong> <br />
+          Turns on site high speed to be attractive for people and search
+          engines.</span
+        >
+      </div>
+    </footer>
+  </body>
+</html>

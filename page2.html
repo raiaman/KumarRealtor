@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Kumar Realtor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets\css\page2.css" />
+
+    <!-- JS Scripts -->
+    <script src="assets/js/jquery-3.6.4.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.dataTables.min.js"></script>
+    <script src="assets/js/dataTables.bootstrap4.min.js"></script>
+
+    <script>
+      function openMenu() {
+        const menu = document.getElementById("mobileMenu");
+        menu.classList.toggle("show");
+      }
+    </script>
+    <script>
+      document.querySelectorAll(".navbar-item").forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href").substring(1);
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar fixed-top">
+      <div class="container d-flex justify-content-between align-items-center">
+        <a class="navbar-brand" href="#">Kumar Realtor</a>
+        <div class="d-none d-md-flex">
+          <a class="navbar-item" href="page2.html">Home</a>
+          <a class="navbar-item" href="#location">Location</a>
+          <a class="navbar-item" href="#about">About Project</a>
+          <a class="navbar-item" href="#amenities">Amenities</a>
+          <a class="navbar-item" href="#floorplan">Floor Plan</a>
+          <a class="navbar-item" href="#highlights">Highlights</a>
+          <a class="navbar-item" href="#about-dev">About Developer</a>
+        </div>
+        <span class="menu-icon d-block d-md-none" onclick="openMenu()">☰</span>
+      </div>
+      <div id="mobileMenu" class="mobile-menu d-md-none">
+        <a class="navbar-item" href="page2.html">Home</a>
+        <a class="navbar-item" href="#location">Location</a>
+        <a class="navbar-item" href="#about">About Project</a>
+        <a class="navbar-item" href="#amenities">Amenities</a>
+        <a class="navbar-item" href="#floorplan">Floor Plan</a>
+        <a class="navbar-item" href="#highlights">Highlights</a>
+        <a class="navbar-item" href="#about-dev">About Developer</a>
+      </div>
+    </nav>
+
+    <!-- BANNER -->
+    <div class="container-fluid p-0 mt-5 pt-4">
+      <picture>
+        <source
+          media="(max-width: 768px)"
+          srcset="assets/img/page2-banner.jpg"
+        />
+        <img
+          src="assets/img/page2-banner.jpg"
+          class="img-fluid w-100"
+          style="aspect-ratio: 16 / 9"
+          alt="Banner"
+        />
+      </picture>
+    </div>
+
+    <!-- Mobile Contact Form (visible only on mobile) -->
+    <div
+      class="d-block d-md-none container my-4 p-4"
+      style="background-color: #f8f9fa; border-radius: 8px"
+    >
+      <h5 class="mb-3">Get in Touch!</h5>
+      <p class="mb-4">Our team will call you shortly.</p>
+
+      <form>
+        <div class="mb-3">
+          <label for="name" class="form-label">Name *</label>
+          <input type="text" class="form-control" id="name" required />
+        </div>
+
+        <div class="mb-3">
+          <label for="contact" class="form-label">Contact No *</label>
+          <input type="tel" class="form-control" id="contact" required />
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email *</label>
+          <input type="email" class="form-control" id="email" required />
+        </div>
+
+        <div class="mb-3">
+          <label for="configuration" class="form-label"
+            >Please Select Configuration *</label
+          >
+          <select class="form-select" id="configuration" required>
+            <option value="" selected disabled>Select an option</option>
+            <option value="1">1 BHK</option>
+            <option value="2">2 BHK</option>
+            <option value="3">3 BHK</option>
+          </select>
+        </div>
+
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="updates" />
+          <label class="form-check-label" for="updates"
+            >Yes, I would like to receive updates & promotions from Kumar
+            Realtor Team.</label
+          >
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary w-100"
+          style="background-color: #2b3990; border: none"
+        >
+          SUBMIT
+        </button>
+      </form>
+    </div>
+
+    <!-- LOCATION SECTION -->
+    <div id="location" class="container-fluid text-center py-5">
+      <div class="row">
+        <div
+          class="col-md-6 d-flex flex-column justify-content-center align-items-center p-4"
+        >
+          <div class="heading text-center text-md-start">
+            NAVI MUMBAI'S CENTER<br />
+            ISN'T JUST ON THE MAP.<br />
+            IT'S IN THE SPOTLIGHT.<br />
+            <b>WELCOME TO NERUL</b>
+          </div>
+          <img
+            src="assets/img/white-line.png"
+            class="my-3"
+            style="max-height: 80px; width: auto"
+            alt="Separator"
+          />
+          <div class="content text-center text-md-start">
+            Recognised as the nucleus of Navi Mumbai, Nerul is where life pulses
+            with unmatched vibrancy. This premium residential and commercial hub
+            offers seamless connectivity, verdant green spaces, esteemed
+            educational institutions, and the iconic DY Patil Stadium that has
+            hosted international cricket and concerts. With the forthcoming Navi
+            Mumbai International Airport and Metro expansion, Nerul is poised
+            for unprecedented growth. Here, every moment is an invitation to be
+            part of a community that's not just living but thriving.
+          </div>
+        </div>
+        <div class="col-md-6 p-4">
+          <img
+            loading="lazy"
+            src="assets/img/page2-map.jpg"
+            class="img-fluid w-100"
+            alt="Map"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="container-fluid py-5">
+      <div class="row align-items-center justify-content-center">
+        <!-- Mobile: Image First -->
+        <div class="col-12 d-md-none text-center mb-4">
+          <img
+            loading="lazy"
+            src="assets/img/about2.png"
+            class="img-fluid w-100"
+            alt="Luxury Residence"
+          />
+        </div>
+
+        <!-- Content Column -->
+        <div class="col-md-6 col-lg-6 px-4 px-md-5 text-center mx-auto">
+          <img
+            loading="lazy"
+            src="assets/img/about.png"
+            class="img-fluid"
+            style="max-width: 200px"
+            alt="About Icon"
+          />
+
+          <h2 class="heading-alt pt-4 pt-md-5">
+            LUXURY, REIMAGINED IN<br />
+            <b>THE HEART OF FUTURE CENTER</b>
+          </h2>
+
+          <p class="content">
+            Some addresses offer luxury. This one defines it. Rising 21 storeys
+            in the heart of Future Centre, #NeoNerul is where expansive decks
+            open to breathtaking views, grand lobbies set the tone for
+            exclusivity, and every detail is designed for those who live ahead
+            of the curve. This isn't just a residence—it's the pinnacle of
+            luxury in a city that never slows down.
+          </p>
+
+          <!-- Features Grid -->
+          <div class="row pt-4">
+            <div class="col-6 col-md-3 py-3 text-center">
+              <img
+                src="assets/img/i1.png"
+                class="img-fluid mb-2"
+                style="max-width: 60px"
+                alt="Tower Icon"
+              />
+              <p class="mb-0">G+21 storey ultra-luxury tower</p>
+            </div>
+            <div class="col-6 col-md-3 py-3 text-center">
+              <img
+                src="assets/img/i2.png"
+                class="img-fluid mb-2"
+                style="max-width: 60px"
+                alt="Retail Icon"
+              />
+              <p class="mb-0">Retail + Office Spaces</p>
+            </div>
+            <div class="col-6 col-md-3 py-3 text-center">
+              <img
+                src="assets/img/i3.png"
+                class="img-fluid mb-2"
+                style="max-width: 60px"
+                alt="Lobby Icon"
+              />
+              <p class="mb-0">AC entrance lobby</p>
+            </div>
+            <div class="col-6 col-md-3 py-3 text-center">
+              <img
+                src="assets/img/i4.png"
+                class="img-fluid mb-2"
+                style="max-width: 60px"
+                alt="Design Icon"
+              />
+              <p class="mb-0">Designer lobby finishes</p>
+            </div>
+            <div class="col-6 col-md-3 py-3 text-center">
+              <img
+                src="assets/img/i5.png"
+                class="img-fluid mb-2"
+                style="max-width: 60px"
+                alt="Elevator Icon"
+              />
+              <p class="mb-0">3 high-speed elevators</p>
+            </div>
+            <div class="col-6 col-md-3 py-3 text-center">
+              <img
+                src="assets/img/i6.png"
+                class="img-fluid mb-2"
+                style="max-width: 60px"
+                alt="Service Icon"
+              />
+              <p class="mb-0">Service / fire elevator</p>
+            </div>
+            <div class="col-6 col-md-3 py-3 text-center">
+              <img
+                src="assets/img/i7.png"
+                class="img-fluid mb-2"
+                style="max-width: 60px"
+                alt="Security Icon"
+              />
+              <p class="mb-0">24x7 Security & CCTV</p>
+            </div>
+            <div class="col-6 col-md-3 py-3 text-center">
+              <img
+                src="assets/img/i8.png"
+                class="img-fluid mb-2"
+                style="max-width: 60px"
+                alt="Fire Safety Icon"
+              />
+              <p class="mb-0">Fire fighting system</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desktop: Image Right -->
+        <div class="col-md-6 d-none d-md-block text-center">
+          <img
+            loading="lazy"
+            src="assets/img/about2.png"
+            class="img-fluid w-100"
+            alt="Luxury Residence"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- AMENITIES-->
+    <section id="amenities">
+      <div class="container-fluid">
+        <div class="row g-0">
+          <div class="col-6 col-md-4">
+            <img
+              loading="lazy"
+              src="assets/img/c1.png"
+              class="w-100"
+              alt="Amenity 1"
+            />
+          </div>
+          <div class="col-6 col-md-4">
+            <img
+              loading="lazy"
+              src="assets/img/c2.png"
+              class="w-100"
+              alt="Amenity 2"
+            />
+          </div>
+          <div class="col-6 col-md-4">
+            <img
+              loading="lazy"
+              src="assets/img/c3.png"
+              class="w-100"
+              alt="Amenity 3"
+            />
+          </div>
+          <div class="col-6 col-md-4">
+            <img
+              loading="lazy"
+              src="assets/img/c4.png"
+              class="w-100"
+              alt="Amenity 4"
+            />
+          </div>
+          <div class="col-6 col-md-4">
+            <img
+              loading="lazy"
+              src="assets/img/c5.png"
+              class="w-100"
+              alt="Amenity 5"
+            />
+          </div>
+          <div class="col-6 col-md-4">
+            <img
+              loading="lazy"
+              src="assets/img/c6.png"
+              class="w-100"
+              alt="Amenity 6"
+            />
+          </div>
+          <div class="col-12 col-md-6">
+            <img
+              loading="lazy"
+              src="assets/img/d1.png"
+              class="w-100"
+              alt="Amenity 7"
+            />
+          </div>
+          <div class="col-12 col-md-6">
+            <img
+              loading="lazy"
+              src="assets/img/d2.png"
+              class="w-100"
+              alt="Amenity 8"
+            />
+          </div>
+          <div class="col-12 col-md-6">
+            <img
+              loading="lazy"
+              src="assets/img/d3.png"
+              class="w-100"
+              alt="Amenity 9"
+            />
+          </div>
+          <div class="col-12 col-md-6">
+            <img
+              loading="lazy"
+              src="assets/img/d4.png"
+              class="w-100"
+              alt="Amenity 10"
+            />
+          </div>
+        </div>
+      </div>
+
+      <section class="py-5" id="floorplan">
+        <div class="container d-none d-md-block">
+          <div class="row p-lg-4">
+            <div
+              class="col-md-4 p-4"
+              style="border: 1px solid #19344e; position: relative; left: -15px"
+            >
+              <img
+                loading="lazy"
+                src="assets/img/2bhk.png"
+                class="w-100 pb-3"
+                alt="2 BHK Floor Plan"
+              />
+              <div class="heading pb-3">2 BHK</div>
+              <div
+                class="text-center wow fadeInDown"
+                style="visibility: visible; animation-name: fadeInDown"
+              >
+                <a data-bs-toggle="modal" data-bs-target="#callus">
+                  <button class="btn enquire-table px-4 py-2">
+                    Enquire Now
+                  </button>
+                </a>
+              </div>
+            </div>
+            <div class="col-md-4 p-4" style="border: 1px solid #19344e">
+              <img
+                loading="lazy"
+                src="assets/img/3bhk.png"
+                class="w-100 pb-3"
+                alt="3 BHK Floor Plan"
+              />
+              <div class="heading pb-3">3 BHK</div>
+              <div
+                class="text-center wow fadeInDown"
+                style="visibility: visible; animation-name: fadeInDown"
+              >
+                <a data-bs-toggle="modal" data-bs-target="#callus">
+                  <button class="btn enquire-table px-4 py-2">
+                    Enquire Now
+                  </button>
+                </a>
+              </div>
+            </div>
+            <div
+              class="col-md-4 p-4"
+              style="
+                border: 1px solid #19344e;
+                position: relative;
+                right: -15px;
+              "
+            >
+              <img
+                loading="lazy"
+                src="assets/img/jodi.png"
+                class="w-100 pb-3"
+                alt="5 BHK Jodi Floor Plan"
+              />
+              <div class="heading pb-3">5 BHK (Jodi)</div>
+              <div
+                class="text-center wow fadeInDown"
+                style="visibility: visible; animation-name: fadeInDown"
+              >
+                <a data-bs-toggle="modal" data-bs-target="#callus">
+                  <button class="btn enquire-table px-4 py-2">
+                    Enquire Now
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container d-block d-md-none">
+          <div class="row p-lg-4">
+            <div class="col-12 p-4" style="border: 1px solid #19344e">
+              <img
+                loading="lazy"
+                src="assets/img/2bhk.png"
+                class="w-100 pb-3"
+                alt="2 BHK Floor Plan"
+              />
+              <div class="heading-mob pb-3">2 BHK</div>
+              <div
+                class="text-center wow fadeInDown"
+                style="visibility: visible; animation-name: fadeInDown"
+              >
+                <a data-bs-toggle="modal" data-bs-target="#callus">
+                  <button class="btn enquire-table px-4 py-2 content-table-mob">
+                    Enquire Now
+                  </button>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 py-2"></div>
+            <div class="col-12 p-4" style="border: 1px solid #19344e">
+              <img
+                loading="lazy"
+                src="assets/img/3bhk.png"
+                class="w-100 pb-3"
+                alt="3 BHK Floor Plan"
+              />
+              <div class="heading-mob pb-3">3 BHK</div>
+              <div
+                class="text-center wow fadeInDown"
+                style="visibility: visible; animation-name: fadeInDown"
+              >
+                <a data-bs-toggle="modal" data-bs-target="#callus">
+                  <button class="btn enquire-table px-4 py-2 content-table-mob">
+                    Enquire Now
+                  </button>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 py-2"></div>
+            <div class="col-12 p-4" style="border: 1px solid #19344e">
+              <img
+                loading="lazy"
+                src="assets/img/jodi.png"
+                class="w-100 pb-3"
+                alt="5 BHK Jodi Floor Plan"
+              />
+              <div class="heading-mob pb-3">5 BHK (Jodi)</div>
+              <div
+                class="text-center wow fadeInDown"
+                style="visibility: visible; animation-name: fadeInDown"
+              >
+                <a data-bs-toggle="modal" data-bs-target="#callus">
+                  <button class="btn enquire-table px-4 py-2 content-table-mob">
+                    Enquire Now
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Highlights Section -->
+      <section id="highlights">
+        <div class="container-fluid d-none d-md-block">
+          <div class="row pt-5">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+              <div class="heading" style="color: #6e5d43">
+                WHEN LUXURY
+                <br />
+                IS REAL, YOU FEEL IT
+                <br />
+                <b>IN EVERY INCH.</b>
+              </div>
+              <div class="heading pt-3" style="font-size: 1dvw; color: #6e5d43">
+                2 &amp; 3 BED DECK RESIDENCES
+              </div>
+              <div
+                class="row g-0"
+                style="position: relative; top: -3.7dvw; margin-bottom: -3.5dvw"
+              >
+                <div class="col-5"></div>
+                <div class="col-7">
+                  <img
+                    loading="lazy"
+                    src="assets/img/gold-line.png"
+                    class="w-100"
+                    alt="Gold Line"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class="col-md-4 content"
+              style="padding-top: 5dvw; color: rgb(110, 93, 67)"
+            >
+              Luxury isn't about labels. It's about how a space makes you feel.
+              The seamless flow from your living room to an expansive deck. The
+              quiet indulgence of a private dry balcony. More light, more air,
+              more of everything that makes a home truly exceptional. Because
+              when luxury is done right, it's not just seen—it's felt.
+            </div>
+            <div class="col-md-2"></div>
+            <div
+              class="col-md-12"
+              style="position: relative; top: -10dvw; margin-bottom: -10dvw"
+            >
+              <img
+                loading="lazy"
+                src="assets/img/img2-desk.jpg"
+                class="w-100"
+                alt="Highlights Image"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid py-3 d-block d-md-none text-center">
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+              <div class="heading-mob" style="color: #6e5d43">
+                WHEN LUXURY
+                <br />
+                IS REAL, YOU FEEL IT
+                <br />
+                <b>IN EVERY INCH.</b>
+              </div>
+              <div
+                class="heading-mob pt-2 pb-2"
+                style="font-size: 3.5dvw; color: #6e5d43"
+              >
+                2 &amp; 3 BED DECK RESIDENCES
+              </div>
+              <img
+                src="assets/img/gold-line.png"
+                style="height: 15dvw; width: 10dvw"
+                class=""
+                alt="Gold Line Mobile"
+              />
+            </div>
+            <div
+              class="col-md-4 content-mob px-5 pt-2"
+              style="color: rgb(110, 93, 67)"
+            >
+              Luxury isn't about labels. It's about how a space makes you feel.
+              The seamless flow from your living room to an expansive deck. The
+              quiet indulgence of a private dry balcony. More light, more air,
+              more of everything that makes a home truly exceptional. Because
+              when luxury is done right, it's not just seen—it's felt.
+            </div>
+            <div class="col-md-2"></div>
+            <div
+              class="col-md-12"
+              style="position: relative; top: -20dvh; margin-bottom: -20dvh"
+            >
+              <img
+                loading="lazy"
+                src="assets/img/img2-mob.jpg"
+                class="w-100"
+                alt="Highlights Mobile Image"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+    <!-- Sticky Bottom Form -->
+    <div class="sticky-form-wrapper">
+      <form
+        class="container-fluid d-flex flex-wrap justify-content-center align-items-center p-3"
+      >
+        <input
+          type="text"
+          class="form-control m-2"
+          placeholder="Name *"
+          required
+          style="max-width: 200px"
+        />
+        <input
+          type="tel"
+          class="form-control m-2"
+          placeholder="Contact No *"
+          required
+          style="max-width: 200px"
+        />
+        <input
+          type="email"
+          class="form-control m-2"
+          placeholder="Email *"
+          required
+          style="max-width: 200px"
+        />
+        <select class="form-select m-2" required style="max-width: 200px">
+          <option selected disabled>Please Select Configuration</option>
+          <option>2 BHK</option>
+          <option>3 BHK</option>
+          <option>5 BHK (Jodi)</option>
+        </select>
+
+        <button
+          type="submit"
+          class="btn btn-light text-primary fw-bold m-2 px-4 py-2 rounded-pill"
+        >
+          SUBMIT
+        </button>
+
+        <div class="form-check form-check-inline text-white m-2">
+          <input class="form-check-input" type="radio" name="updates" checked />
+          <label class="form-check-label"
+            >Yes, I would like to receive updates & promotions from Kamdhenu
+            Team.</label
+          >
+        </div>
+      </form>
+    </div>
+    <!-- Mobile Form (visible on sm only) -->
+    <!-- Mobile CTA Buttons -->
+    <div
+      class="mobile-form-wrapper d-flex justify-content-around align-items-center py-2 fixed-bottom"
+    >
+      <a
+        href="tel:+919876543210"
+        class="btn btn-light text-primary fw-bold rounded-pill px-4"
+      >
+        📞 Call Now
+      </a>
+      <a
+        href="#enquireModal"
+        class="btn btn-outline-light fw-bold rounded-pill px-4"
+        data-bs-toggle="modal"
+      >
+        📝 Enquire Now
+      </a>
+    </div>
+    <div
+      class="container-fluid text-center d-none d-md-block"
+      style="
+        height: 50dvw;
+        background: url('assets/img/d5desk.png') no-repeat center center;
+        background-size: cover;
+        background-position: bottom;
+      "
+    >
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div
+          class="col-md-8 pt-4 wow fadeInDown"
+          style="z-index: 2; visibility: visible; animation-name: fadeInDown"
+        >
+          <div class="heading" style="color: white">
+            THE CITY’S ENERGY.
+            <br />
+            NATURE’S SERENITY.
+            <br />
+            <b>BOTH, FROM YOUR DECK.</b>
+          </div>
+          <img
+            src="assets\img\white-line.png"
+            style="height: 4dvw; width: 5dvw"
+            alt=""
+          />
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div
+          class="col-md-8 content px-5 pt-2 wow fadeInDown"
+          style="
+            padding-top: 5dvw;
+            color: white;
+            z-index: 2;
+            font-weight: 600;
+            visibility: visible;
+            animation-name: fadeInDown;
+          "
+        >
+          You live where the city never stops. But there's enough room to pause.
+          Step onto your private deck and take in the hills that stretch beyond
+          the skyline. Green views that soften the rush, open spaces that let
+          you breathe. Few get to experience the best of both worlds.
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+
+    <!-- About the Developer Section -->
+    <div class="container-fluid text-center py-3">
+      <div class="row wow fadeInDown">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+          <div class="heading">
+            CRAFTING TIMELESS SPACES
+            <br />
+            <b>SINCE THE '50s.</b>
+          </div>
+          <div class="content">
+            Founded in 1955 by the visionary Late Mr. Anantram Sabhlok, Kamdhenu
+            has set the standard for excellence in construction. Under the
+            leadership of Mr. Surinder Sabhlok and Mr. Karan Sabhlok, we have
+            built a legacy of delivering exceptional residential and commercial
+            spaces. Every project we undertake is crafted with care, precision,
+            and a commitment to quality.
+            <br /><br />
+            Our passion for innovation drives us to take on new challenges that
+            push boundaries, while our dedication to sustainability and social
+            responsibility remains at the core of our work. At Kamdhenu, we
+            promise superior quality, timely delivery, and a future where every
+            building contributes to better lifestyle and vibrant communities. At
+            Kamdhenu, we don't just build structures; we craft legacies that
+            stand the test of time.
+          </div>
+          <img
+            loading="lazy"
+            src="img/logo.png"
+            class="w-50"
+            alt="Kamdhenu Logo"
+          />
+        </div>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="project-grid">
+        <div class="project-item">
+          <img loading="lazy" src="img/e1.png" alt="Kamdhenu Oaklands" />
+          Kamdhenu Oaklands
+        </div>
+        <div class="project-item">
+          <img loading="lazy" src="img/e2.png" alt="Kamdhenu Vogue" />
+          Kamdhenu Vogue
+        </div>
+        <div class="project-item">
+          <img loading="lazy" src="img/e3.png" alt="Kamdhenu Grandeur" />
+          Kamdhenu Grandeur
+        </div>
+        <div class="project-item">
+          <img loading="lazy" src="img/e4.png" alt="Kamdhenu Zenith" />
+          Kamdhenu Zenith
+        </div>
+        <div class="project-item">
+          <img loading="lazy" src="img/e5.png" alt="Kamdhenu Aura" />
+          Kamdhenu Aura
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="container-fluid text-center bg-dark text-white py-4">
+      <div class="row">
+        <div class="col-md-6">
+          <p>Contact Us: +91 9876543210 | info@kumarrealtor.com</p>
+        </div>
+        <div class="col-md-6">
+          <p>
+            Follow Us:
+            <a href="#" class="text-white text-decoration-none mx-2"
+              >Facebook</a
+            >
+            <a href="#" class="text-white text-decoration-none mx-2">Twitter</a>
+            <a href="#" class="text-white text-decoration-none mx-2"
+              >Instagram</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
