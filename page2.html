@@ -16,25 +16,7 @@
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/jquery.dataTables.min.js"></script>
     <script src="assets/js/dataTables.bootstrap4.min.js"></script>
-
-    <script>
-      function openMenu() {
-        const menu = document.getElementById("mobileMenu");
-        menu.classList.toggle("show");
-      }
-    </script>
-    <script>
-      document.querySelectorAll(".navbar-item").forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          const targetId = this.getAttribute("href").substring(1);
-          const targetElement = document.getElementById(targetId);
-          if (targetElement) {
-            targetElement.scrollIntoView({ behavior: "smooth" });
-          }
-        });
-      });
-    </script>
+    <script src="assets\js\page2.js"></script>
   </head>
 
   <body>
@@ -163,6 +145,7 @@
             part of a community that's not just living but thriving.
           </div>
         </div>
+
         <div class="col-md-6 p-4">
           <img
             loading="lazy"
@@ -172,6 +155,14 @@
           />
         </div>
       </div>
+    </div>
+    <div
+      class="text-center wow fadeInDown pt-4 pb-5"
+      style="visibility: visible; animation-name: fadeInDown"
+    >
+      <a data-bs-toggle="modal" data-bs-target="#callus">
+        <button class="btn enquire-table px-4 py-2">Enquire Now</button>
+      </a>
     </div>
 
     <!-- ABOUT SECTION -->
@@ -299,6 +290,14 @@
         </div>
       </div>
     </section>
+    <div
+      class="text-center wow fadeInDown pt-4 pb-5"
+      style="visibility: visible; animation-name: fadeInDown"
+    >
+      <a data-bs-toggle="modal" data-bs-target="#callus">
+        <button class="btn enquire-table px-4 py-2">Enquire Now</button>
+      </a>
+    </div>
 
     <!-- AMENITIES-->
     <section id="amenities">
@@ -523,6 +522,7 @@
           </div>
         </div>
       </section>
+
       <!-- Highlights Section -->
       <section id="highlights">
         <div class="container-fluid d-none d-md-block">
@@ -784,24 +784,60 @@
       <!-- Projects Grid -->
       <div class="project-grid">
         <div class="project-item">
-          <img loading="lazy" src="img/e1.png" alt="Kamdhenu Oaklands" />
+          <img loading="lazy" src="assets\img\e1.png" alt="Kamdhenu Oaklands" />
           Kamdhenu Oaklands
         </div>
         <div class="project-item">
-          <img loading="lazy" src="img/e2.png" alt="Kamdhenu Vogue" />
+          <img loading="lazy" src="assets\img\e2.png" alt="Kamdhenu Vogue" />
           Kamdhenu Vogue
         </div>
         <div class="project-item">
-          <img loading="lazy" src="img/e3.png" alt="Kamdhenu Grandeur" />
+          <img loading="lazy" src="assets\img\e3.png" alt="Kamdhenu Grandeur" />
           Kamdhenu Grandeur
         </div>
         <div class="project-item">
-          <img loading="lazy" src="img/e4.png" alt="Kamdhenu Zenith" />
+          <img loading="lazy" src="assets\img\e4.png" alt="Kamdhenu Zenith" />
           Kamdhenu Zenith
         </div>
         <div class="project-item">
-          <img loading="lazy" src="img/e5.png" alt="Kamdhenu Aura" />
+          <img loading="lazy" src="assets\img\e5.png" alt="Kamdhenu Aura" />
           Kamdhenu Aura
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="row text-start pt-5 wow fadeInUp"
+      style="visibility: visible; animation-name: fadeInUp"
+    >
+      <div class="col-md-2 text-end my-auto">
+        <img loading="lazy" src="assets\img\qr.jpg" class="w-50" alt="" />
+      </div>
+      <div class="col-md-9 footer-text my-auto">
+        <span style="border-block: 1px solid black; padding-block: 5px">
+          Site Address: Codename Neo Nerul, Plot no. - 44, Sector - 13, Nerul,
+          Navi Mumbai
+        </span>
+        <br /><br />
+        <div style="font-size: 0.6dvw">
+          This project is registered under MahaRERA Registration No.
+          P51700077771 and is available on the website
+          maharera.mahaonline.gov.in
+        </div>
+        <div class="pt-2" style="font-size: 0.55dvw">
+          Disclaimer: We are offering unfurnished apartments not including
+          add-ons such as furniture and txtures, unless specifically
+          incorporated in the agreement of sale. The purpose of this brochure is
+          to indicate to the customers, the range of the amenities and
+          facilities that come up in the project as per the present approved
+          layout. All amenities, facilities, plans, layouts, locations,
+          specifications and services mentioned are indicative of the kind of
+          development proposed and its fnally subjected to approval of the
+          respective authorities or as required by the promoters/developers in
+          the interest of continuing improvement, without prior notice or
+          obligation. Tolerance of +/- 3% is possible in the unit areas on
+          account of design and construction variances. All these dimensions are
+          unfinished structural dimensions.
         </div>
       </div>
     </div>
