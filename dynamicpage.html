@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Kumar Realtor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- CSS Links -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets\css\page2.css" />
+
+    <!-- JS Scripts -->
+    <script src="assets/js/jquery-3.6.4.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/jquery.dataTables.min.js"></script>
+    <script src="assets/js/dataTables.bootstrap4.min.js"></script>
+    <script src="assets\js\page2.js"></script>
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar fixed-top">
+      <div class="container d-flex justify-content-between align-items-center">
+        <a class="navbar-brand" href="#">Kumar Realtor</a>
+        <div class="d-none d-md-flex">
+          <a class="navbar-item" href="page2.html">Home</a>
+          <a class="navbar-item" href="#location">Location</a>
+          <a class="navbar-item" href="#about">About Project</a>
+          <a class="navbar-item" href="#amenities">Amenities</a>
+          <a class="navbar-item" href="#floorplan">Floor Plan</a>
+          <a class="navbar-item" href="#highlights">Highlights</a>
+          <a class="navbar-item" href="#about-dev">About Developer</a>
+        </div>
+        <span class="menu-icon d-block d-md-none" onclick="openMenu()">☰</span>
+      </div>
+      <div id="mobileMenu" class="mobile-menu d-md-none">
+        <a class="navbar-item" href="page2.html">Home</a>
+        <a class="navbar-item" href="#location">Location</a>
+        <a class="navbar-item" href="#about">About Project</a>
+        <a class="navbar-item" href="#amenities">Amenities</a>
+        <a class="navbar-item" href="#floorplan">Floor Plan</a>
+        <a class="navbar-item" href="#highlights">Highlights</a>
+        <a class="navbar-item" href="#about-dev">About Developer</a>
+      </div>
+    </nav>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Banner Data and Functions
+        const bannerData = {
+          desktopBanner: "assets/img/page2-banner.jpg",
+          mobileBanner: "assets/img/page2-banner.jpg",
+        };
+
+        function updateBanner() {
+          const bannerPicture = document.getElementById("bannerPicture");
+          if (bannerPicture) {
+            const sourceElement = bannerPicture.querySelector("source");
+            const imgElement = bannerPicture.querySelector("img");
+
+            if (sourceElement) sourceElement.srcset = bannerData.mobileBanner;
+            if (imgElement) imgElement.src = bannerData.desktopBanner;
+          }
+        }
+
+        // Configuration Dropdown
+        const configurations = ["1 BHK", "2 BHK", "3 BHK", "5 BHK (Jodi)"];
+
+        function populateDropdown(dropdownId, options) {
+          const dropdown = document.getElementById(dropdownId);
+          if (dropdown) {
+            dropdown.innerHTML = options
+              .map((option) => `<option value="${option}">${option}</option>`)
+              .join("");
+          }
+        }
+
+        // Location Section
+        const locationData = {
+          heading: `NAVI MUMBAI'S CENTER<br />ISN'T JUST ON THE MAP.<br />IT'S IN THE SPOTLIGHT.<br /><b>WELCOME TO NERUL</b>`,
+          separatorImage: "assets/img/white-line.png",
+          content: `Recognised as the nucleus of Navi Mumbai, Nerul is where life pulses
+                  with unmatched vibrancy. This premium residential and commercial hub
+                  offers seamless connectivity, verdant green spaces, esteemed
+                  educational institutions, and the iconic DY Patil Stadium that has
+                  hosted international cricket and concerts. With the forthcoming Navi
+                  Mumbai International Airport and Metro expansion, Nerul is poised
+                  for unprecedented growth. Here, every moment is an invitation to be
+                  part of a community that's not just living but thriving.`,
+          mapImage: "assets/img/page2-map.jpg",
+        };
+
+        // About Section
+        const aboutData = {
+          heading: `LUXURY, REIMAGINED IN<br /><b>THE HEART OF FUTURE CENTER</b>`,
+          content: `Some addresses offer luxury. This one defines it. Rising 21 storeys
+                    in the heart of Future Centre, #NeoNerul is where expansive decks
+                    open to breathtaking views, grand lobbies set the tone for
+                    exclusivity, and every detail is designed for those who live ahead
+                    of the curve. This isn't just a residence—it's the pinnacle of
+                    luxury in a city that never slows down.`,
+          icon: "assets/img/about.png",
+          imageMobile: "assets/img/about.png",
+          imageDesktop: "assets/img/about2.png",
+          features: [
+            {
+              icon: "assets/img/i1.png",
+              text: "G+21 storey ultra-luxury tower",
+            },
+            { icon: "assets/img/i2.png", text: "Retail + Office Spaces" },
+            { icon: "assets/img/i3.png", text: "AC entrance lobby" },
+            { icon: "assets/img/i4.png", text: "Designer lobby finishes" },
+            { icon: "assets/img/i5.png", text: "3 high-speed elevators" },
+            { icon: "assets/img/i6.png", text: "Service / fire elevator" },
+            { icon: "assets/img/i7.png", text: "24x7 Security & CCTV" },
+            { icon: "assets/img/i8.png", text: "Fire fighting system" },
+          ],
+        };
+
+        // Initialize all components
+        function initialize() {
+          updateBanner();
+          populateDropdown("configuration", configurations);
+          populateDropdown("modalConfiguration", configurations);
+
+          // Location Section
+          if (document.getElementById("locationHeading")) {
+            document.getElementById("locationHeading").innerHTML =
+              locationData.heading;
+          }
+          if (document.getElementById("locationSeparator")) {
+            document.getElementById("locationSeparator").src =
+              locationData.separatorImage;
+          }
+          if (document.getElementById("locationContent")) {
+            document.getElementById("locationContent").innerHTML =
+              locationData.content;
+          }
+          if (document.getElementById("locationMap")) {
+            document.getElementById("locationMap").src = locationData.mapImage;
+          }
+
+          // About Section
+          if (document.getElementById("aboutHeading")) {
+            document.getElementById("aboutHeading").innerHTML =
+              aboutData.heading;
+          }
+          if (document.getElementById("aboutContent")) {
+            document.getElementById("aboutContent").innerHTML =
+              aboutData.content;
+          }
+          if (document.getElementById("aboutIcon")) {
+            document.getElementById("aboutIcon").src = aboutData.icon;
+          }
+          if (document.getElementById("aboutImageMobile")) {
+            document.getElementById("aboutImageMobile").src =
+              aboutData.imageMobile;
+          }
+          if (document.getElementById("aboutImageDesktop")) {
+            document.getElementById("aboutImageDesktop").src =
+              aboutData.imageDesktop;
+          }
+
+          // Features Grid
+          const aboutFeatures = document.getElementById("aboutFeatures");
+          if (aboutFeatures) {
+            aboutFeatures.innerHTML = aboutData.features
+              .map(
+                (feature) => `
+                    <div class="col-6 col-md-3 py-3 text-center">
+                      <img src="${feature.icon}"
+                           class="img-fluid mb-2"
+                           style="max-width:60px"
+                           alt="${feature.text}"
+                           onerror="this.src='assets/img/placeholder.png'">
+                      <p class="mb-0">${feature.text}</p>
+                    </div>
+                  `
+              )
+              .join("");
+          }
+        }
+
+        // Amenities Data
+        const amenitiesData = {
+          smallImages: [
+            { src: "assets/img/c1.png", alt: "Swimming Pool" },
+            { src: "assets/img/c2.png", alt: "Gymnasium" },
+            { src: "assets/img/c3.png", alt: "Children's Play Area" },
+            { src: "assets/img/c4.png", alt: "Clubhouse" },
+            { src: "assets/img/c5.png", alt: "Landscaped Gardens" },
+            { src: "assets/img/c6.png", alt: "Jogging Track" },
+          ],
+          largeImages: [
+            { src: "assets/img/d1.png", alt: "Luxury Lobby" },
+            { src: "assets/img/d2.png", alt: "Rooftop Deck" },
+            { src: "assets/img/d3.png", alt: "Party Hall" },
+            { src: "assets/img/d4.png", alt: "Meditation Zone" },
+          ],
+        };
+
+        // Function to render amenities
+        function renderAmenities() {
+          const amenitiesContainer = document.querySelector(
+            "#amenities .row.g-0"
+          );
+          if (!amenitiesContainer) return;
+
+          // Clear existing content
+          amenitiesContainer.innerHTML = "";
+
+          // Render small images (6 items)
+          amenitiesData.smallImages.forEach((image) => {
+            amenitiesContainer.innerHTML += `
+              <div class="col-6 col-md-4">
+                <img loading="lazy" src="${image.src}" class="w-100" alt="${image.alt}"
+                     onerror="this.src='assets/img/amenity-placeholder.png'">
+              </div>
+            `;
+          });
+
+          // Render large images (4 items)
+          amenitiesData.largeImages.forEach((image) => {
+            amenitiesContainer.innerHTML += `
+              <div class="col-12 col-md-6">
+                <img loading="lazy" src="${image.src}" class="w-100" alt="${image.alt}"
+                     onerror="this.src='assets/img/amenity-placeholder-wide.png'">
+              </div>
+            `;
+          });
+        }
+
+        // Initialize amenities section
+        renderAmenities();
+
+        // Floorplan Data
+        const floorplanData = {
+          plans: [
+            {
+              type: "2 BHK",
+              image: "assets/img/2bhk.png",
+              alt: "2 BHK Floor Plan",
+              modalTarget: "#callus",
+            },
+            {
+              type: "3 BHK",
+              image: "assets/img/3bhk.png",
+              alt: "3 BHK Floor Plan",
+              modalTarget: "#callus",
+            },
+            {
+              type: "5 BHK (Jodi)",
+              image: "assets/img/jodi.png",
+              alt: "5 BHK Jodi Floor Plan",
+              modalTarget: "#callus",
+            },
+          ],
+        };
+
+        // Function to render floorplans
+        function renderFloorplans() {
+          // Desktop version
+          const desktopContainer = document.querySelector(
+            "#floorplan .container.d-none.d-md-block .row"
+          );
+          if (desktopContainer) {
+            desktopContainer.innerHTML = floorplanData.plans
+              .map(
+                (plan, index) => `
+              <div class="col-md-4 p-4" style="border: 1px solid #19344e; ${
+                index === 0
+                  ? "position: relative; left: -15px"
+                  : index === 2
+                  ? "position: relative; right: -15px"
+                  : ""
+              }">
+                <img loading="lazy" src="${
+                  plan.image
+                }" class="w-100 pb-3" alt="${plan.alt}"
+                     onerror="this.src='assets/img/floorplan-placeholder.png'">
+                <div class="heading pb-3">${plan.type}</div>
+                <div class="text-center wow fadeInDown" style="visibility: visible; animation-name: fadeInDown">
+                  <button class="btn enquire-table px-4 py-2" data-bs-toggle="modal" data-bs-target="${
+                    plan.modalTarget
+                  }">
+                    Enquire Now
+                  </button>
+                </div>
+              </div>
+            `
+              )
+              .join("");
+          }
+
+          // Mobile version
+          const mobileContainer = document.querySelector(
+            "#floorplan .container.d-block.d-md-none .row"
+          );
+          if (mobileContainer) {
+            mobileContainer.innerHTML = floorplanData.plans
+              .map(
+                (plan) => `
+              <div class="col-12 p-4" style="border: 1px solid #19344e">
+                <img loading="lazy" src="${plan.image}" class="w-100 pb-3" alt="${plan.alt}"
+                     onerror="this.src='assets/img/floorplan-placeholder.png'">
+                <div class="heading-mob pb-3">${plan.type}</div>
+                <div class="text-center wow fadeInDown" style="visibility: visible; animation-name: fadeInDown">
+                  <button class="btn enquire-table px-4 py-2 content-table-mob"
+                          data-bs-toggle="modal" data-bs-target="${plan.modalTarget}">
+                    Enquire Now
+                  </button>
+                </div>
+              </div>
+              <div class="col-12 py-2"></div>
+            `
+              )
+              .join("");
+          }
+        }
+
+        // Initialize floorplans
+        renderFloorplans();
+
+        // Highlights Data
+        const highlightsData = {
+          title: `WHEN LUXURY<br />IS REAL, YOU FEEL IT<br /><b>IN EVERY INCH.</b>`,
+          subtitle: "2 & 3 BED DECK RESIDENCES",
+          separatorImage: "assets/img/gold-line.png",
+          content: `Luxury isn't about labels. It's about how a space makes you feel.
+            The seamless flow from your living room to an expansive deck. The
+            quiet indulgence of a private dry balcony. More light, more air,
+            more of everything that makes a home truly exceptional. Because
+            when luxury is done right, it's not just seen—it's felt.`,
+          desktopImage: "assets/img/img2-desk.jpg",
+          mobileImage: "assets/img/img2-mob.jpg",
+          textColor: "#6e5d43",
+          rgbColor: "rgb(110, 93, 67)",
+        };
+
+        // Function to render highlights
+        function renderHighlights() {
+          // Desktop version
+          const desktopContainer = document.querySelector(
+            "#highlights .container-fluid.d-none.d-md-block"
+          );
+          if (desktopContainer) {
+            desktopContainer.innerHTML = `
+              <div class="row pt-5">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                  <div class="heading" style="color: ${highlightsData.textColor}">
+                    ${highlightsData.title}
+                  </div>
+                  <div class="heading pt-3" style="font-size: 1dvw; color: ${highlightsData.textColor}">
+                    ${highlightsData.subtitle}
+                  </div>
+                  <div class="row g-0" style="position: relative; top: -3.7dvw; margin-bottom: -3.5dvw">
+                    <div class="col-5"></div>
+                    <div class="col-7">
+                      <img loading="lazy" src="${highlightsData.separatorImage}"
+                           class="w-100" alt="Gold Line"
+                           onerror="this.src='assets/img/placeholder-line.png'">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 content" style="padding-top: 5dvw; color: ${highlightsData.rgbColor}">
+                  ${highlightsData.content}
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-12" style="position: relative; top: -10dvw; margin-bottom: -10dvw">
+                  <img loading="lazy" src="${highlightsData.desktopImage}"
+                       class="w-100" alt="Highlights Image"
+                       onerror="this.src='assets/img/placeholder-wide.png'">
+                </div>
+              </div>
+            `;
+          }
+
+          // Mobile version
+          const mobileContainer = document.querySelector(
+            "#highlights .container-fluid.d-block.d-md-none"
+          );
+          if (mobileContainer) {
+            mobileContainer.innerHTML = `
+              <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                  <div class="heading-mob" style="color: ${highlightsData.textColor}">
+                    ${highlightsData.title}
+                  </div>
+                  <div class="heading-mob pt-2 pb-2" style="font-size: 2.5dvw; color: ${highlightsData.textColor}">
+                    ${highlightsData.subtitle}
+                  </div>
+                  <img src="${highlightsData.separatorImage}"
+                       style="height: 15dvw; width: 10dvw"
+                       alt="Gold Line Mobile"
+                       onerror="this.src='assets/img/placeholder-line.png'">
+                </div>
+                <div class="col-md-4 content" style="padding-top: 5dvw; color: ${highlightsData.rgbColor}">
+                  ${highlightsData.content}
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-12" style="position: relative; top: -20dvh; margin-bottom: -20dvh">
+                  <img loading="lazy" src="${highlightsData.mobileImage}"
+                       class="w-100" alt="Highlights Mobile Image"
+                       onerror="this.src='assets/img/placeholder-wide.png'">
+                </div>
+              </div>
+            `;
+          }
+        }
+
+        // Initialize highlights
+        renderHighlights();
+
+        // Form Data Configuration
+        const formData = {
+          configurations: ["2 BHK", "3 BHK", "5 BHK (Jodi)"],
+          contactNumber: "+919876543210",
+          modalTarget: "#callus",
+          checkboxLabel:
+            "Yes, I would like to receive updates & promotions from Kamdhenu Team.",
+          formFields: [
+            {
+              type: "text",
+              placeholder: "Name *",
+              required: true,
+              className: "form-control m-2",
+              style: "max-width: 200px",
+            },
+            {
+              type: "tel",
+              placeholder: "Contact No *",
+              required: true,
+              className: "form-control m-2",
+              style: "max-width: 200px",
+            },
+            {
+              type: "email",
+              placeholder: "Email *",
+              required: true,
+              className: "form-control m-2",
+              style: "max-width: 200px",
+            },
+          ],
+        };
+
+        // Render Sticky Form
+        function renderStickyForm() {
+          const formWrapper = document.querySelector(".sticky-form-wrapper");
+          if (!formWrapper) return;
+
+          formWrapper.innerHTML = `
+        <form class="container-fluid d-flex flex-wrap justify-content-center align-items-center p-3">
+          ${formData.formFields
+            .map(
+              (field) => `
+            <input
+              type="${field.type}"
+              class="${field.className}"
+              placeholder="${field.placeholder}"
+              ${field.required ? "required" : ""}
+              style="${field.style}"
+            >
+          `
+            )
+            .join("")}
+          
+          <select class="form-select m-2" required style="max-width: 200px">
+            <option selected disabled>Please Select Configuration</option>
+            ${formData.configurations
+              .map(
+                (option) => `
+              <option value="${option}">${option}</option>
+            `
+              )
+              .join("")}
+          </select>
+          
+          <button type="submit" class="btn btn-light text-primary fw-bold m-2 px-4 py-2 rounded-pill">
+            SUBMIT
+          </button>
+          
+          <div class="form-check form-check-inline text-white m-2">
+            <input class="form-check-input" type="radio" name="updates" checked>
+            <label class="form-check-label">${formData.checkboxLabel}</label>
+          </div>
+        </form>
+      `;
+        }
+
+        // Render Mobile CTA
+        function renderMobileCTA() {
+          const mobileCTA = document.querySelector(".mobile-form-wrapper");
+          if (!mobileCTA) return;
+
+          mobileCTA.innerHTML = `
+        <a href="tel:${formData.contactNumber}" class="btn btn-light text-primary fw-bold rounded-pill px-4">
+          📞 Call Now
+        </a>
+        <a href="${formData.modalTarget}" class="btn btn-outline-light fw-bold rounded-pill px-4" data-bs-toggle="modal">
+          📝 Enquire Now
+        </a>
+      `;
+        }
+
+        // Initialize forms
+        renderStickyForm();
+        renderMobileCTA();
+
+        // Add form submission handler
+        document.addEventListener("submit", function (e) {
+          if (e.target.closest(".sticky-form-wrapper form")) {
+            e.preventDefault();
+            const form = e.target;
+            const formValues = {
+              name: form.querySelector('input[type="text"]').value,
+              contact: form.querySelector('input[type="tel"]').value,
+              email: form.querySelector('input[type="email"]').value,
+              configuration: form.querySelector("select").value,
+              updates: form.querySelector('input[type="radio"]').checked,
+            };
+            console.log("Form submitted:", formValues);
+            // Add your form submission logic here (AJAX, etc.)
+          }
+        });
+        const heroData = {
+          backgroundImage: "assets/img/d5desk.png",
+          title: `THE CITY'S ENERGY.<br />NATURE'S SERENITY.<br /><b>BOTH, FROM YOUR DECK.</b>`,
+          separatorImage: "assets/img/white-line.png",
+          content: `You live where the city never stops. But there's enough room to pause.
+        Step onto your private deck and take in the hills that stretch beyond
+        the skyline. Green views that soften the rush, open spaces that let
+        you breathe. Few get to experience the best of both worlds.`,
+          textColor: "white",
+          animation: "wow fadeInDown",
+        };
+
+        // Render Hero Section
+        function renderHeroSection() {
+          const heroSection = document.createElement("div");
+          heroSection.className =
+            "container-fluid text-center d-none d-md-block hero-section";
+          heroSection.style.cssText = `
+        height: 50dvw;
+        background: url('${heroData.backgroundImage}') no-repeat center center;
+        background-size: cover;
+        background-position: bottom;
+      `;
+
+          heroSection.innerHTML = `
+        <div class="row">
+          <div class="col-md-2"></div>
+          <div class="col-md-8 pt-4 ${heroData.animation}" 
+               style="z-index: 2; visibility: visible; animation-name: fadeInDown">
+            <div class="heading" style="color: ${heroData.textColor}">
+              ${heroData.title}
+            </div>
+            <img src="${heroData.separatorImage}" 
+                 style="height: 4dvw; width: 5dvw" 
+                 alt="Section separator"
+                 onerror="this.style.display='none'">
+          </div>
+          <div class="col-md-2"></div>
+          
+          <div class="col-md-2"></div>
+          <div class="col-md-8 content px-5 pt-2 ${heroData.animation}"
+               style="padding-top: 5dvw; color: ${heroData.textColor}; z-index: 2; font-weight: 600; visibility: visible;">
+            ${heroData.content}
+          </div>
+          <div class="col-md-2"></div>
+        </div>
+      `;
+
+          // Insert into DOM (replace existing static section)
+          const staticHero = document.querySelector(
+            ".container-fluid.text-center.d-none.d-md-block"
+          );
+          if (staticHero) {
+            staticHero.replaceWith(heroSection);
+          } else {
+            document
+              .querySelector("#highlights")
+              .insertAdjacentElement("afterend", heroSection);
+          }
+        }
+
+        // Initialize hero section
+        renderHeroSection();
+        // about developer
+        const aboutDevData = {
+          heading: `CRAFTING TIMELESS SPACES<br /><b>SINCE THE '50s.</b>`,
+          content: `Founded in 1955 by the visionary Late Mr. Anantram Sabhlok, Kamdhenu has set the standard for excellence in construction. Under the leadership of Mr. Surinder Sabhlok and Mr. Karan Sabhlok, we have built a legacy of delivering exceptional residential and commercial spaces. Every project we undertake is crafted with care, precision, and a commitment to quality.<br /><br />Our passion for innovation drives us to take on new challenges that push boundaries, while our dedication to sustainability and social responsibility remains at the core of our work. At Kamdhenu, we promise superior quality, timely delivery, and a future where every building contributes to better lifestyle and vibrant communities. At Kamdhenu, we don't just build structures; we craft legacies that stand the test of time.`,
+          logo: "img/logo.png",
+        };
+
+        document.getElementById("aboutDevHeading").innerHTML =
+          aboutDevData.heading;
+        document.getElementById("aboutDevContent").innerHTML =
+          aboutDevData.content;
+        document.getElementById("aboutDevLogo").src = aboutDevData.logo;
+
+        //project grids
+        const projectsData = [
+          { image: "assets/img/e1.png", name: "Kamdhenu Oaklands" },
+          { image: "assets/img/e2.png", name: "Kamdhenu Vogue" },
+          { image: "assets/img/e3.png", name: "Kamdhenu Grandeur" },
+          { image: "assets/img/e4.png", name: "Kamdhenu Zenith" },
+          { image: "assets/img/e5.png", name: "Kamdhenu Aura" },
+        ];
+
+        const projectGrid = document.getElementById("projectGrid");
+        projectGrid.innerHTML = ""; // Clear static content if any
+
+        projectsData.forEach((project) => {
+          const div = document.createElement("div");
+          div.className = "project-item";
+          div.innerHTML = `
+      <img loading="lazy" src="${project.image}" alt="${project.name}" />
+      ${project.name}
+    `;
+          projectGrid.appendChild(div);
+        });
+
+        //site data
+
+        const siteAddressData = {
+          qrImage: "assets/img/qr.jpg",
+          address:
+            "Codename Neo Nerul, Plot No. 44, Sector - 13, Nerul, Navi Mumbai",
+          reraNumber: "P51700077771",
+          disclaimer: `We are offering unfurnished apartments not including furniture or textures, unless specifically incorporated in the agreement of sale.
+  All visuals, layouts, and details are indicative and subject to change without notice.
+  Tolerance of +/- 3% is possible due to design and construction variances.`,
+        };
+
+        const footerData = {
+          contact: {
+            phone: "+91 9876543210",
+            email: "info@kumarrealtor.com",
+          },
+          social: [
+            { name: "Facebook", link: "#" },
+            { name: "Twitter", link: "#" },
+            { name: "Instagram", link: "#" },
+          ],
+        };
+
+        // Generate Site Address Section
+        function renderSiteAddress() {
+          const siteAddressSection = document.getElementById(
+            "site-address-section"
+          );
+
+          siteAddressSection.innerHTML = `
+    <div class="row text-start">
+      <div class="col-md-2 text-end my-auto">
+        <img loading="lazy" src="${siteAddressData.qrImage}" class="img-fluid w-75" alt="QR Code" />
+      </div>
+      <div class="col-md-9 footer-text my-auto">
+        <span style="border-top: 1px solid black; border-bottom: 1px solid black; padding: 5px 0; display: inline-block;">
+          Site Address: ${siteAddressData.address}
+        </span>
+        <br /><br />
+        <div style="font-size: 0.9vw;">
+          This project is registered under MahaRERA Registration No. <b>${siteAddressData.reraNumber}</b>
+          and is available on the website
+          <a href="https://maharera.mahaonline.gov.in" target="_blank">maharera.mahaonline.gov.in</a>
+        </div>
+        <div class="pt-2" style="font-size: 0.85vw;">
+          <strong>Disclaimer:</strong> ${siteAddressData.disclaimer}
+        </div>
+      </div>
+    </div>
+  `;
+        }
+
+        // Function to render Footer Section
+        function renderFooter() {
+          const footerSection = document.getElementById("footer-section");
+
+          footerSection.innerHTML = `
+    <div class="row">
+      <div class="col-md-6 mb-2 mb-md-0">
+        <p class="mb-0">Contact Us: ${footerData.contact.phone} | ${
+            footerData.contact.email
+          }</p>
+      </div>
+      <div class="col-md-6">
+        <p class="mb-0">
+          Follow Us: ${footerData.social
+            .map(
+              (s) =>
+                `<a href="${s.link}" class="text-white text-decoration-none mx-2">${s.name}</a>`
+            )
+            .join("")}
+        </p>
+      </div>
+    </div>
+  `;
+        }
+
+        // Run initialization
+        initialize();
+      });
+    </script>
+    <!-- 
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const bannerData = {
+          desktopBanner: "assets/img/page2-banner.jpg",
+          mobileBanner: "assets/img/page2-banner.jpg",
+        };
+
+        // Function to dynamically update the banner image
+        function updateBanner() {
+          const bannerPicture = document.getElementById("bannerPicture");
+          const sourceElement = bannerPicture.querySelector("source");
+          const imgElement = bannerPicture.querySelector("img");
+
+          // Set the srcset for mobile and src for desktop
+          sourceElement.srcset = bannerData.mobileBanner;
+          imgElement.src = bannerData.desktopBanner;
+        }
+
+        // Call the function to update the banner when the page loads
+        window.onload = updateBanner;
+
+        // Configuration options
+        const configurations = ["1 BHK", "2 BHK", "3 BHK", "5 BHK (Jodi)"];
+
+        // Function to populate dropdown dynamically
+        function populateDropdown(dropdownId, options) {
+          const dropdown = document.getElementById(dropdownId);
+          if (dropdown) {
+            options.forEach((optionText) => {
+              const option = document.createElement("option");
+              option.value = optionText;
+              option.textContent = optionText;
+              dropdown.appendChild(option);
+            });
+          } else {
+            console.error(`Dropdown with id "${dropdownId}" not found.`);
+          }
+        }
+
+        // Populate both dropdowns
+        populateDropdown("configuration", configurations); // For the main form
+        populateDropdown("modalConfiguration", configurations); // For the modal form
+
+        //LOCATION DYNAMIC
+        const locationData = {
+          heading: `NAVI MUMBAI'S CENTER<br />ISN'T JUST ON THE MAP.<br />IT'S IN THE SPOTLIGHT.<br /><b>WELCOME TO NERUL</b>`,
+          separatorImage: "assets/img/white-line.png",
+          content: `Recognised as the nucleus of Navi Mumbai, Nerul is where life pulses
+        with unmatched vibrancy. This premium residential and commercial hub
+        offers seamless connectivity, verdant green spaces, esteemed
+        educational institutions, and the iconic DY Patil Stadium that has
+        hosted international cricket and concerts. With the forthcoming Navi
+        Mumbai International Airport and Metro expansion, Nerul is poised
+        for unprecedented growth. Here, every moment is an invitation to be
+        part of a community that's not just living but thriving.`,
+          mapImage: "assets/img/page2-map.jpg",
+        };
+
+        // Populate the location section dynamically
+        const locationHeading = document.getElementById("locationHeading");
+        const locationSeparator = document.getElementById("locationSeparator");
+        const locationContent = document.getElementById("locationContent");
+        const locationMap = document.getElementById("locationMap");
+
+        locationHeading.innerHTML = locationData.heading;
+        locationSeparator.src = locationData.separatorImage;
+        locationContent.innerHTML = locationData.content;
+        locationMap.src = locationData.mapImage; // Set the map image dynamically
+      });
+
+      //about section dynamic
+      // JSON object containing "About" section data
+      const aboutData = {
+        heading: `LUXURY, REIMAGINED IN<br /><b>THE HEART OF FUTURE CENTER</b>`,
+        content: `Some addresses offer luxury. This one defines it. Rising 21 storeys
+            in the heart of Future Centre, #NeoNerul is where expansive decks
+            open to breathtaking views, grand lobbies set the tone for
+            exclusivity, and every detail is designed for those who live ahead
+            of the curve. This isn't just a residence—it's the pinnacle of
+            luxury in a city that never slows down.`,
+        icon: "assets/img/about.png",
+        imageMobile: "assets/img/about.png",
+        imageDesktop: "assets/img/about2.png",
+        features: [
+          {
+            icon: "assets/img/i1.png",
+            text: "G+21 storey ultra-luxury tower",
+          },
+          {
+            icon: "assets/img/i2.png",
+            text: "Retail + Office Spaces",
+          },
+          { icon: "assets/img/i3.png", text: "AC entrance lobby" },
+          {
+            icon: "assets/img/i4.png",
+            text: "Designer lobby finishes",
+          },
+          {
+            icon: "assets/img/i5.png",
+            text: "3 high-speed elevators",
+          },
+          {
+            icon: "assets/img/i6.png",
+            text: "Service / fire elevator",
+          },
+          { icon: "assets/img/i7.png", text: "24x7 Security & CCTV" },
+          { icon: "assets/img/i8.png", text: "Fire fighting system" },
+        ],
+      };
+
+      // Populate the "About" section
+      document.getElementById("aboutHeading").innerHTML = aboutData.heading;
+      document.getElementById("aboutContent").innerHTML = aboutData.content;
+      document.getElementById("aboutIcon").src = aboutData.icon;
+      document.getElementById("aboutImageMobile").src = aboutData.imageMobile;
+      document.getElementById("aboutImageDesktop").src = aboutData.imageDesktop;
+
+      // Populate the features grid
+      const aboutFeatures = document.getElementById("aboutFeatures");
+      aboutData.features.forEach((feature) => {
+        const featureElement = document.createElement("div");
+        featureElement.className = "col-6 col-md-3 py-3 text-center";
+        featureElement.innerHTML = `
+            <img
+              src="${feature.icon}"
+              class="img-fluid mb-2"
+              style="max-width: 60px"
+              alt="${feature.text}"
+            />
+            <p class="mb-0">${feature.text}</p>
+          `;
+        aboutFeatures.appendChild(featureElement);
+      });
+    </script> -->
+
+    <!-- Dynamic BANNER -->
+    <div class="container-fluid p-0 mt-5 pt-4">
+      <picture id="bannerPicture">
+        <source media="(max-width: 768px)" srcset="" />
+        <img
+          src=""
+          class="img-fluid w-100"
+          style="aspect-ratio: 16 / 9"
+          alt="Banner"
+        />
+      </picture>
+    </div>
+    <!-- Mobile Contact Form (visible only on mobile) -->
+    <div
+      id="mobileform"
+      class="d-block d-md-none container my-4 p-4"
+      style="background-color: #f8f9fa; border-radius: 8px"
+    >
+      <h5 class="mb-3">Get in Touch!</h5>
+      <p class="mb-4">Our team will call you shortly.</p>
+
+      <form>
+        <div class="mb-3">
+          <label for="name" class="form-label">Name *</label>
+          <input type="text" class="form-control" id="name" required />
+        </div>
+
+        <div class="mb-3">
+          <label for="contact" class="form-label">Contact No *</label>
+          <input type="tel" class="form-control" id="contact" required />
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email *</label>
+          <input type="email" class="form-control" id="email" required />
+        </div>
+
+        <div class="mb-3">
+          <label for="configuration" class="form-label"
+            >Please Select Configuration *</label
+          >
+          <select class="form-select" id="configuration" required>
+            <!-- Options will be dynamically populated -->
+          </select>
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary w-100"
+          style="background-color: #2b3990; border: none"
+        >
+          SUBMIT
+        </button>
+      </form>
+    </div>
+
+    <!-- LOCATION SECTION -->
+    <div id="location" class="container-fluid text-center py-5">
+      <div class="row">
+        <div
+          class="col-md-6 d-flex flex-column justify-content-center align-items-center p-4"
+        >
+          <div
+            id="locationHeading"
+            class="heading text-center text-md-start"
+          ></div>
+          <img
+            id="locationSeparator"
+            class="my-3"
+            style="max-height: 80px; width: auto"
+            alt="Separator"
+          />
+          <div
+            id="locationContent"
+            class="content text-center text-md-start"
+          ></div>
+        </div>
+        <div class="col-md-6 text-center">
+          <img
+            id="locationMap"
+            class="img-fluid"
+            style="max-height: 400px; width: auto"
+            alt="Location Map"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!--ENQUIRE-->
+    <div
+      class="text-center wow fadeInDown pt-4 pb-5"
+      style="visibility: visible; animation-name: fadeInDown"
+    >
+      <button
+        class="btn enquire-table px-4 py-2"
+        data-bs-toggle="modal"
+        data-bs-target="#callus"
+      >
+        Enquire Now
+      </button>
+    </div>
+
+    <!-- Call Us Modal -->
+    <div
+      class="modal fade"
+      id="callus"
+      tabindex="-1"
+      aria-labelledby="callusLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-4">
+          <div class="modal-header border-0">
+            <h5 class="modal-title" id="callusLabel">Get in Touch</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Name *"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="tel"
+                  class="form-control"
+                  placeholder="Contact No *"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Email *"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="modalConfiguration" class="form-label"
+                  >Please Select Configuration *</label
+                >
+                <select class="form-select" id="modalConfiguration" required>
+                  <!-- Options will be dynamically populated -->
+                </select>
+              </div>
+              <div class="form-check mb-3">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="updates"
+                  id="updatesRadio"
+                  checked
+                />
+                <label class="form-check-label" for="updatesRadio">
+                  Yes, I would like to receive updates & promotions from
+                  Kamdhenu Team.
+                </label>
+              </div>
+              <button type="submit" class="btn btn-primary w-100">
+                SUBMIT
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="container-fluid py-5">
+      <div class="row align-items-center justify-content-center">
+        <!-- Mobile: Image First -->
+        <div class="col-12 d-md-none text-center mb-4">
+          <img
+            id="aboutImageMobile"
+            loading="lazy"
+            src=""
+            class="img-fluid w-100"
+            alt="Luxury Residence"
+          />
+        </div>
+
+        <!-- Content Column -->
+        <div class="col-md-6 col-lg-6 px-4 px-md-5 text-center mx-auto">
+          <img
+            id="aboutIcon"
+            loading="lazy"
+            src=""
+            class="img-fluid"
+            style="max-width: 200px"
+            alt="About Icon"
+          />
+
+          <h2 id="aboutHeading" class="heading-alt pt-4 pt-md-5"></h2>
+
+          <p id="aboutContent" class="content"></p>
+
+          <!-- Features Grid -->
+          <div id="aboutFeatures" class="row pt-4"></div>
+        </div>
+
+        <!-- Desktop: Image Right -->
+        <div class="col-md-6 d-none d-md-block text-center">
+          <img
+            id="aboutImageDesktop"
+            loading="lazy"
+            src=""
+            class="img-fluid w-100"
+            alt="Luxury Residence"
+          />
+        </div>
+      </div>
+    </section>
+    <div
+      class="text-center wow fadeInDown pt-4 pb-5"
+      style="visibility: visible; animation-name: fadeInDown"
+    >
+      <button
+        class="btn enquire-table px-4 py-2"
+        data-bs-toggle="modal"
+        data-bs-target="#callus"
+      >
+        Enquire Now
+      </button>
+    </div>
+
+    <!-- AMENITIES-->
+    <section id="amenities">
+      <div class="container-fluid">
+        <div class="row g-0">
+          <!-- Content will be dynamically inserted here -->
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5" id="floorplan">
+      <!-- Desktop Version -->
+      <div class="container d-none d-md-block">
+        <div class="row p-lg-4">
+          <!-- Content will be dynamically inserted here -->
+        </div>
+      </div>
+
+      <!-- Mobile Version -->
+      <div class="container d-block d-md-none">
+        <div class="row p-lg-4">
+          <!-- Content will be dynamically inserted here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section id="highlights">
+      <!-- Desktop Version -->
+      <div class="container-fluid d-none d-md-block">
+        <!-- Content will be dynamically inserted here -->
+      </div>
+
+      <!-- Mobile Version -->
+      <div class="container-fluid d-block d-md-none">
+        <!-- Content will be dynamically inserted here -->
+      </div>
+    </section>
+
+    <!-- Mobile Form (visible on sm only) -->
+
+    <!-- Mobile CTA Buttons -->
+
+    <div class="sticky-form-wrapper">
+      <!-- Form will be dynamically inserted here -->
+    </div>
+
+    <div
+      class="mobile-form-wrapper d-flex justify-content-around align-items-center py-2 fixed-bottom"
+    >
+      <!-- Mobile CTA will be dynamically inserted here -->
+    </div>
+
+    <!--HERO SECTION -->
+    <div
+      class="container-fluid text-center d-none d-md-block"
+      style="
+        height: 50dvw;
+        background: url('assets/img/d5desk.png') no-repeat center center;
+        background-size: cover;
+        background-position: bottom;
+      "
+    >
+      <!-- Content will be dynamically replaced -->
+    </div>
+
+    <!-- About the Developer Section -->
+
+    <div id="about-dev" class="container-fluid text-center py-3">
+      <div class="row wow fadeInDown">
+        <div class="col-md-1"></div>
+
+        <div class="col-md-10">
+          <div class="heading" id="aboutDevHeading"></div>
+
+          <div class="content" id="aboutDevContent"></div>
+
+          <img
+            loading="lazy"
+            id="aboutDevLogo"
+            class="w-50"
+            alt="Kamdhenu Logo"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Project Grid Section -->
+    <div class="container my-5">
+      <div class="row" id="projectGrid">
+        <!-- Project items will be injected here dynamically via JS -->
+      </div>
+    </div>
+
+    <div
+      class="row text-start pt-5 wow fadeInUp"
+      style="visibility: visible; animation-name: fadeInUp"
+    >
+      <div class="col-md-2 text-end my-auto">
+        <img loading="lazy" src="assets\img\qr.jpg" class="w-50" alt="" />
+      </div>
+
+      <div class="col-md-9 footer-text my-auto">
+        <span style="border-block: 1px solid black; padding-block: 5px">
+          Site Address: Codename Neo Nerul, Plot no. - 44, Sector - 13, Nerul,
+          Navi Mumbai
+        </span>
+
+        <br /><br />
+
+        <div style="font-size: 0.6dvw">
+          This project is registered under MahaRERA Registration No.
+          P51700077771 and is available on the website
+          maharera.mahaonline.gov.in
+        </div>
+
+        <div class="pt-2" style="font-size: 0.55dvw">
+          Disclaimer: We are offering unfurnished apartments not including
+          add-ons such as furniture and txtures, unless specifically
+          incorporated in the agreement of sale. The purpose of this brochure is
+          to indicate to the customers, the range of the amenities and
+          facilities that come up in the project as per the present approved
+          layout. All amenities, facilities, plans, layouts, locations,
+          specifications and services mentioned are indicative of the kind of
+          development proposed and its fnally subjected to approval of the
+          respective authorities or as required by the promoters/developers in
+          the interest of continuing improvement, without prior notice or
+          obligation. Tolerance of +/- 3% is possible in the unit areas on
+          account of design and construction variances. All these dimensions are
+          unfinished structural dimensions.
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+
+    <div class="container-fluid text-center bg-dark text-white py-4">
+      <div class="row">
+        <div class="col-md-6">
+          <p>Contact Us: +91 9876543210 | info@kumarrealtor.com</p>
+        </div>
+
+        <div class="col-md-6">
+          <p>
+            Follow Us:
+
+            <a href="#" class="text-white text-decoration-none mx-2"
+              >Facebook</a
+            >
+
+            <a href="#" class="text-white text-decoration-none mx-2">Twitter</a>
+
+            <a href="#" class="text-white text-decoration-none mx-2"
+              >Instagram</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
